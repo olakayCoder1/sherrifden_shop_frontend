@@ -35,10 +35,10 @@ export default function Products(props) {
                 <div>
 
                 </div>
-                <div class="flex items-center justify-center py-4 flex-wrap">
-                    <button type="button" class="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-0 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800">All categories</button>
-                    <button type="button" class="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-0 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 ">Men</button>
-                    <button type="button" class="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-0 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 ">Women</button>
+                <div className="flex items-center justify-center py-4 flex-wrap">
+                    <button type="button" className="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-0 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800">All categories</button>
+                    <button type="button" className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-0 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 ">Men</button>
+                    <button type="button" className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-0 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 ">Women</button>
                 </div>
 
 
