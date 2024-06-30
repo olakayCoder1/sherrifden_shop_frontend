@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import NavLink from './NavLink';
 
 
 export default function Header(props) {
@@ -22,19 +23,13 @@ export default function Header(props) {
 
                         <ul className="hidden lg:flex items-center justify-start gap-6 md:gap-8 py-3 sm:justify-center">
                         <li>
-                            <Link to={"/"} href="#" title="" className="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
-                            Home
-                            </Link>
+                            <NavLink toPath="/" pathName="Home" isActive={true}/>
                         </li>
                         <li className="shrink-0">
-                            <Link to={'/products'} href="#" title="" className="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
-                            Products
-                            </Link>
+                            <NavLink toPath="/products" pathName="Products" isActive={false}/>
                         </li>
                         <li className="shrink-0">
-                            <a href="#" title="" className="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
-                            Contact
-                            </a>
+                            <NavLink toPath="#" pathName="Contact" isActive={false}/>
                         </li>
                         </ul>
                     </div>

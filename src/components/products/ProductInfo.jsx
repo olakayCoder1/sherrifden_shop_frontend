@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoCloudDownloadOutline } from "react-icons/io5";
 import olakay from '../../assets/images/cart2.webp'
 import ProtectedImageDetail from '../ProtectedImageDetail';
+import DownloadImageModal from '../modal/DownloadImageModal';
 
 export default function ProductInfo(props) {
+
+
+    const [showDownLoadModal, setShowDownloadModal] = useState(false)
     
 
     return (
@@ -116,10 +120,11 @@ export default function ProductInfo(props) {
                             </span>
                         </button> */}
                         <button  
+                            onClick={()=> setShowDownloadModal(true)}
                         // className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " type="button"
                             href="#"
                             title=""
-                            data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+                            // data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                             className="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                         role="button"
                         >
@@ -161,6 +166,9 @@ export default function ProductInfo(props) {
                 </div>
                 </div>
             </section>
+
+            {showDownLoadModal && <DownloadImageModal setShowModal={setShowDownloadModal}/> }
+            
         </>
     )
 }
