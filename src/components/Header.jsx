@@ -9,7 +9,7 @@ export default function Header(props) {
     
     const location = useLocation();
     const [activeLink, setActiveLink] = useState(location.pathname);
-    const [showDropDown, setShowDropDown] = useState(location.pathname);
+    const [showDropDown, setShowDropDown] = useState(false);
 
     useEffect(() => {
         setActiveLink(location.pathname);
