@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
+import { useLocation } from 'react-router-dom';
 
 
 export default function Header(props) {
     
+    const location = useLocation();
+    const [activeLink, setActiveLink] = useState(location.pathname);
+
+    useEffect(() => {
+        setActiveLink(location.pathname);
+    }, [location]);
 
     return (
         <>
@@ -23,13 +30,13 @@ export default function Header(props) {
 
                         <ul className="hidden lg:flex items-center justify-start gap-6 md:gap-8 py-3 sm:justify-center">
                         <li>
-                            <NavLink toPath="/" pathName="Home" isActive={true}/>
+                            <NavLink toPath="/" pathName="Home" isActive={activeLink === '/'}/>
                         </li>
                         <li className="shrink-0">
-                            <NavLink toPath="/products" pathName="Products" isActive={false}/>
+                            <NavLink toPath="/products" pathName="Products" isActive={activeLink === '/products'}/>
                         </li>
                         <li className="shrink-0">
-                            <NavLink toPath="#" pathName="Contact" isActive={false}/>
+                            <NavLink toPath="#" pathName="Contact" isActive={activeLink === '#'}/>
                         </li>
                         </ul>
                     </div>
