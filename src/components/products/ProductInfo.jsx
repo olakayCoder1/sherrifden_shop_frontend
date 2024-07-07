@@ -227,7 +227,7 @@ export default function ProductInfo(props) {
                 </div>
             </section>
 
-            {showDownLoadModal && <DownloadImageModal setShowModal={setShowDownloadModal}/> }
+            {showDownLoadModal && <DownloadImageModal setShowModal={setShowDownloadModal} imageName={product?.title} price={product?.download_price}/> }
             
         </>
     )

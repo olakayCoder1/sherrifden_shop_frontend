@@ -19,7 +19,7 @@ const modal = {
         transition: { delay : 0.5 }
     }
 }
-export default function DownloadImageModal({setShowModal}) {
+export default function DownloadImageModal({setShowModal,imageName,price}) {
     
 
     return (
@@ -69,12 +69,12 @@ export default function DownloadImageModal({setShowModal}) {
 
                                     <div className="p-4 md:p-5">
                                     <h3 className="mb-1 text-xl font-bold text-gray-900 dark:text-white">
-                                        LA VIUDA NEGRA (Hand Embellished)
+                                        {imageName}
                                     </h3>
                                     <p className="text-gray-500 dark:text-gray-400 mb-6">
                                         Downloading this portrait will cost you.{' '}
                                         <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                                        $376
+                                        ${price}
                                         </span>
                                     </p>
                                     <form className="space-y-4" action="#">
