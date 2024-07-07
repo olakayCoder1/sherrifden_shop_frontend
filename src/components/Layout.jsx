@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { GiNotebook } from 'react-icons/gi';
-import CustomPortraitModal from './modal/CustomPortraitModal';
+// import CustomPortraitModal from './modal/CustomPortraitModal';
+import CustomPortraitModal from './modal/CustomPortaitModal';
 
 const Layout = ({ children }) => {
 
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
             <span>Get Custom portrait</span>
           </button> 
           {showCustomPortraitdModal && <CustomPortraitModal setShowModal={setCustomPortraitdModal}/>}
+          {/* {showCustomPortraitdModal && <CustomPortraitModal setShowModal={setCustomPortraitdModal}/>} */}
         </>
       <Footer />
     </>

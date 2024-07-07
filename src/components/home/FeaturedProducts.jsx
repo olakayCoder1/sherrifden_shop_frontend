@@ -1,27 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import ProtectedImage from '../ProtectedImage';
-import olakay from '../../assets/images/kkk.webp'
-import olakay1 from '../../assets/images/cart1.webp'
-import olakay2 from '../../assets/images/cart2.webp'
-import olakay3 from '../../assets/images/cart3.webp'
+import { supabase } from '../../lib/helper/supabaseClient';
+import LoadingImage from '../LoadingImage';
 
 export default function FeaturedProducts(props) {
     
-    const imageUrls = [
-        olakay3,olakay1,olakay2,olakay,
-    ];
+
+
+    const [featuredImages, setFeaturedImages] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        FeaturedImages();
+    }, []);
+
+    async function FeaturedImages() {
+        try {
+        const { data, error } = await supabase
+            .from('images')
+            .select('*')
+            .eq('is_featured', true); // Filter users where is_active is false
+
+        if (error) {
+            throw error;
+        }
+
+        setFeaturedImages(data || []);
+        setIsLoading(false)
+        } catch (error) {
+            console.error('Error fetching users:', error.message);
+        }
+    }
+
+
+   
       
     return (
         <>
-            <div className="bg-white">
+            <div className="bg-white container mx-auto">
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                    {props?.subtitle ? <h2 className="text-2xl tracking-tight text-gray-900">{props?.subtitle}</h2> : <h2 className="text-2xl font-light tracking-tight text-gray-900">Featured Products</h2>
-                    }
-                    <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
-                    {imageUrls.map((url, index) => (
-                        <ProtectedImage key={index} src={url} index={index} alt={`Image ${index + 1}`} />
-                    ))}
-                    </div>
+                {props?.subtitle ? <h2 className="text-2xl tracking-tight text-gray-900">{props?.subtitle}</h2> : <h2 className="text-2xl font-light tracking-tight text-gray-900">Featured Products</h2>}
+
+                    {isLoading ? (
+                        <>
+                        <LoadingImage />
+                        </>
+                    ) : (
+                        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+                            {featuredImages.map((image, index) => (
+                                <ProtectedImage key={index} src={image?.image_url} index={index} alt={image?.title} imageTitle={image?.title}/>
+                            ))}
+                        </div>
+                    )}
+                    
+                    
                 </div>
             </div>
         </>
