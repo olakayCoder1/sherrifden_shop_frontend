@@ -5,7 +5,9 @@ import { supabase } from './lib/helper/supabaseClient';
 function AddProduct() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
   const [isFeatured, setIsFeatured] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [file, setFile] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
@@ -40,7 +42,7 @@ function AddProduct() {
     // Insert product data into the products table
     const { data: productData, error: productError } = await supabase
       .from('images')
-      .insert([{ title, description, is_featured: isFeatured, image_url: uploadedImageUrl }]);
+      .insert([{ title, description, is_featured: isFeatured, image_url: uploadedImageUrl, is_active:isActive, price: parseFloat(price)}]);
 
     if (productError) {
       console.error('Error inserting product:', productError.message);
@@ -56,13 +58,19 @@ function AddProduct() {
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-      />
+      /><br /><br />
       <input
         type="text"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-      />
+      /><br /><br />
+      <input
+        type="number"
+        placeholder="Price"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+      /><br /><br />
       <label>
         Featured:
         <input
@@ -70,7 +78,15 @@ function AddProduct() {
           checked={isFeatured}
           onChange={(e) => setIsFeatured(e.target.checked)}
         />
-      </label>
+      </label><br /><br />
+      <label>
+        IsActive:
+        <input
+          type="checkbox"
+          checked={isActive}
+          onChange={(e) => setIsActive(e.target.checked)}
+        />
+      </label><br /><br />
       <input type="file" onChange={handleFileChange} />
       {uploadedImage && <img src={uploadedImage} alt="Uploaded Preview" style={{ maxWidth: '100%', maxHeight: '200px' }} />}
       {imageUrl && <div>

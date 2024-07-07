@@ -64,12 +64,8 @@ export default function LatestProducts(props) {
                             {featuredImages.map((image, index) => (
                                 <ProtectedImage 
                                     key={index} 
-                                    src={image?.image_url} 
-                                    index={index} 
-                                    alt={image?.title} 
-                                    imageTitle={image?.title}
-                                    identifier={image?.id}
-                                    />
+                                    imageData={image}
+                                />
                             ))}
                         </div>
                     )}

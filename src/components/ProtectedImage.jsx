@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { Link} from 'react-router-dom';
 
-const ProtectedImage = ({ src, alt , index , imageTitle , identifier}) => {
+const ProtectedImage = ({ src, alt ,imageData}) => {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
 
@@ -42,8 +42,8 @@ const ProtectedImage = ({ src, alt , index , imageTitle , identifier}) => {
           className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
         <img 
           
-          src={src}
-          alt={alt}
+          src={imageData?.image_url}
+          alt={imageData?.title}
           draggable="false"
           className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
           
@@ -51,15 +51,15 @@ const ProtectedImage = ({ src, alt , index , imageTitle , identifier}) => {
         <div className="mt-4 flex justify-between">
           <div>
               <h3 className="text-sm text-gray-700">
-              <Link  to={`/products/${identifier}`}>
+              <a  href={`/products/${imageData?.id}`}>
                   <span aria-hidden="true" className="absolute inset-0"></span>
-                  {imageTitle}
-              </Link>
+                  {imageData?.title}
+              </a>
               </h3>
               {/* <p className="mt-1 text-sm text-gray-500">Black</p> */}
           </div>
-        <p className="text-sm font-medium text-gray-900">$35</p>
-        {index % 3 !== 0 && (
+        <p className="text-sm font-medium text-gray-900">${imageData?.price}</p>
+        {imageData?.is_sold && (
           <span className='absolute top-0 text-xs text-white bg-black p-1 px-2 rounded-full border-gray-600 border'>
             sold out
           </span>
