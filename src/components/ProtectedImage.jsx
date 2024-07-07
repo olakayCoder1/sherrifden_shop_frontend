@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { Link} from 'react-router-dom';
 
-const ProtectedImage = ({ src, alt , index , imageTitle}) => {
+const ProtectedImage = ({ src, alt , index , imageTitle , identifier}) => {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
 
@@ -51,7 +51,7 @@ const ProtectedImage = ({ src, alt , index , imageTitle}) => {
         <div className="mt-4 flex justify-between">
           <div>
               <h3 className="text-sm text-gray-700">
-              <Link  to={'/products/details'}>
+              <Link  to={`/products/${identifier}`}>
                   <span aria-hidden="true" className="absolute inset-0"></span>
                   {imageTitle}
               </Link>

@@ -62,7 +62,14 @@ export default function LatestProducts(props) {
                     ) : (
                         <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
                             {featuredImages.map((image, index) => (
-                                <ProtectedImage key={index} src={image?.image_url} index={index} alt={image?.title} imageTitle={image?.title}/>
+                                <ProtectedImage 
+                                    key={index} 
+                                    src={image?.image_url} 
+                                    index={index} 
+                                    alt={image?.title} 
+                                    imageTitle={image?.title}
+                                    identifier={image?.id}
+                                    />
                             ))}
                         </div>
                     )}
